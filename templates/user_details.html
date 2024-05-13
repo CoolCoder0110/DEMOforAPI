@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>User Details</h1>
+        <p>User ID: {{ user.user_id }}</p>
+        <p>Name: {{ user.name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <h2>Movies:</h2>
+        <ul class="movie-list">
+            {% for movie in user.movies %}
+                <li>{{ movie.title }} ({{ movie.year }})
+                    <form action="{{ url_for('remove_movie', user_id=user.user_id, imdb_id=movie.imdb_id) }}" method="post">
+                        <button type="submit" class="btn">Remove Movie</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+</body>
+</html>
