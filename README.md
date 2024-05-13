@@ -1,2 +1,2 @@
 # DEMOforAPI
-Demo for API
+The demo for the API - Movie API
